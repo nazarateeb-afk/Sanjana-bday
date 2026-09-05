@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sanjana ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#a18cd1);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:100%;
+    max-width:430px;
+    min-height:100vh;
+    text-align:center;
+    padding:35px 20px;
+    position:relative;
+    overflow:hidden;
+}
+
+.glow{
+    position:absolute;
+    width:250px;
+    height:250px;
+    background:rgba(255,255,255,.18);
+    border-radius:50%;
+    filter:blur(40px);
+    animation:float 5s infinite alternate;
+}
+
+.glow.one{
+    top:-80px;
+    left:-80px;
+}
+
+.glow.two{
+    bottom:-100px;
+    right:-80px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(40px);}
+}
+
+.card{
+    position:relative;
+    z-index:2;
+    margin-top:35px;
+    padding:30px 20px;
+    border-radius:28px;
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.3);
+    backdrop-filter:blur(12px);
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
+    animation:appear 1.5s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(50px) scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.cake{
+    font-size:75px;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+h1{
+    margin-top:15px;
+    font-size:38px;
+    text-shadow:0 3px 15px rgba(0,0,0,.25);
+}
+
+.name{
+    color:#fff4a8;
+}
+
+.subtitle{
+    margin-top:12px;
+    font-size:18px;
+}
+
+.message{
+    margin-top:25px;
+    line-height:1.7;
+    font-size:16px;
+}
+
+button{
+    margin-top:25px;
+    padding:13px 28px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4f81;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+.hidden{
+    display:none;
+}
+
+.secret{
+    margin-top:20px;
+    font-size:17px;
+    animation:fade 1s ease;
+}
+
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* Falling hearts */
+.heart{
+    position:absolute;
+    top:-30px;
+    font-size:20px;
+    animation:fall linear forwards;
+    z-index:1;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Stars */
+.star{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 1.5s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.2;}
+    to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <div class="card">
+
+        <div class="cake">🎂</div>
+
+        <h1>
+            Happy Birthday<br>
+            <span class="name">Sanjana ❤️</span>
+        </h1>
+
+        <p class="subtitle">
+            Aaj ka din sirf tumhare naam ✨
+        </p>
+
+        <p class="message">
+            Happy Birthday bhnuuu 🎂❤️<br><br>
+
+            Tumhari smile hamesha aise hi bani rahe,
+            tumhari life khushiyon se bhari rahe
+            aur tumhare saare dreams pure ho. ✨
+            <br><br>
+
+            Stay happy, stay amazing! 💕
+        </p>
+
+        <button onclick="showMessage()">
+            💌 Ek Secret Message
+        </button>
+
+        <div id="secret" class="secret hidden">
+            Tum bahut special ho... ❤️✨<br>
+            Happy Birthday once again! 🎂🥳
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+/* Secret message */
+function showMessage(){
+    document.getElementById("secret").classList.remove("hidden");
+}
+
+/* Falling hearts */
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    const hearts=["❤️","💕","💖","💗","💓","✨","🌸"];
+
+    heart.innerHTML=
+        hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.animationDuration=
+        (3+Math.random()*4)+"s";
+
+    heart.style.fontSize=
+        (15+Math.random()*20)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },7000);
+}
+
+setInterval(createHeart,300);
+
+
+/* Background stars */
+for(let i=0;i<35;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+
+    star.style.animationDelay=
+        Math.random()*2+"s";
+
+    document.body.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
